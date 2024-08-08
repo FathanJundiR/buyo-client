@@ -2,7 +2,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Toastify from "toastify-js";
 import { useState } from "react";
-import { GoogleLogin } from "@react-oauth/google";
 
 export default function Login({ url }) {
   const [password, setPassword] = useState("");
@@ -12,7 +11,7 @@ export default function Login({ url }) {
   async function handleLogin(event) {
     event.preventDefault();
     try {
-      let { data } = await axios.post(`${url}/login`, { email, password });
+      let { data } = await axios.post(`${url}/cms/login`, { email, password });
       console.log(data);
       localStorage.setItem("access_token", data.access_token);
       navigate("/");
@@ -30,38 +29,8 @@ export default function Login({ url }) {
         onClick: function () {},
       }).showToast();
     } catch (error) {
-      console.log(error);
       Toastify({
-        text: error,
-        duration: 2000,
-        newWindow: true,
-        close: true,
-        gravity: "bottom",
-        position: "right",
-        stopOnFocus: true,
-        style: {
-          background: "#EF4C54",
-          color: "#17202A",
-          boxShadow: "0 5px 10px black",
-          fontWeight: "bold",
-        },
-      }).showToast();
-    }
-  }
-
-  async function googleLogin(codeResponse) {
-    try {
-      const { data } = await axios.post(`${url}/google-login`, null, {
-        headers: {
-          token: codeResponse.credential,
-        },
-      });
-      localStorage.setItem("access_token", data.access_token);
-      navigate("/");
-    } catch (error) {
-      console.log(error);
-      Toastify({
-        text: error,
+        text: error.response.data.message,
         duration: 2000,
         newWindow: true,
         close: true,
@@ -85,8 +54,7 @@ export default function Login({ url }) {
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold">Login</h1>
             <p className="py-6">
-              yuk Login dulu pake akun kamu ya seyenk, jangan pake punya
-              selingkuhan xixixi
+              Wahai atmin, Loginlah untuk menerima kuasa atas data
             </p>
           </div>
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
@@ -131,16 +99,6 @@ export default function Login({ url }) {
                   </button>
                 </div>
               </form>
-              <div className="divider px-10">OR</div>
-              <div className="mt-6 flex justify-center items-center">
-                <GoogleLogin onSuccess={googleLogin} />
-              </div>
-              <div className="text-center">
-                <p>
-                  Doesn't Have Account?
-                  <a className="text-amber-600"> Register</a>
-                </p>
-              </div>
             </div>
           </div>
         </div>
