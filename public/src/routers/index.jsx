@@ -5,8 +5,9 @@ import Detail from "../views/Detail";
 import { localUrl, gcpUrl } from "../utils/baseUrl";
 import Login from "../views/Login";
 import Toastify from "toastify-js";
+import AskAi from "../views/AskAi";
 
-const url = localUrl;
+const url = gcpUrl;
 const router = createBrowserRouter([
   {
     element: <Login url={url} />,
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home url={url} />,
+      },
+      {
+        path: "/ask-ai",
+        element: <AskAi url={url} />,
       },
       {
         path: "/laptops/:id",

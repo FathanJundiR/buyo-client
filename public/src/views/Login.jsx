@@ -30,7 +30,6 @@ export default function Login({ url }) {
         onClick: function () {},
       }).showToast();
     } catch (error) {
-      console.log(error);
       Toastify({
         text: error,
         duration: 2000,

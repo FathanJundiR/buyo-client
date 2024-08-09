@@ -31,8 +31,8 @@ export default function Form({ handleSubmit, laptop, nameProp }) {
   }, [laptop]);
 
   return (
-    <>
-      <div className="mb-8 font-semibold text-xl text-fuchsia-600">
+    <div className="mb-8">
+      <div className="mb-8 font-semibold text-xl text-fuchsia-600 text-center">
         {nameProp}
       </div>
       <div className="flex flex-col items-center gap-4 mt-14">
@@ -180,6 +180,6 @@ export default function Form({ handleSubmit, laptop, nameProp }) {
           </div>
         </form>
       </div>
-    </>
+    </div>
   );
 }

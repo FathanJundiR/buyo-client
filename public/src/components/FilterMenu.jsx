@@ -1,6 +1,6 @@
 export default function FilterMenu() {
   return (
-    <div className=" h-full w-full bg-blue-600 flex flex-col flex-wrap justify-start">
+    <div className=" h-full w-full bg-blue-600 rounded-lg flex flex-col flex-wrap justify-start">
       <div className="flex text-zinc-300 text-2xl justify-center">FILTER</div>
       <div className=" my-2 bg-slate-950 text-zinc-300 flex flex-col">
         <div className="flex flex-row justify-center bg-emerald-700 text-zinc-300 text-2xl ">
