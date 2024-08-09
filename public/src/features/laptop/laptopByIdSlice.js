@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { localUrl, gcpUrl } from "../../utils/baseUrl";
 
-const url = gcp;
+const url = gcpUrl;
 
 const initialState = {
   laptopById: {},
